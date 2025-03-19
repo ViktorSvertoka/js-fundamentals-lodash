@@ -1,0 +1,21 @@
+{
+  "name": "task-lodash",
+  "version": "1.0.0",
+  "description": "You are developing a user management system for a web application. You need to write functions that will perform specific operations on a list of users. Use the **Lodash** library to implement these functions.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
+  }
+}

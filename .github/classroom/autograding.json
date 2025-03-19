@@ -1,0 +1,13 @@
+{
+  "tests": [
+    {
+      "name": "Test react-props",
+      "setup": "",
+      "run": "echo tests ran",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "points": 10
+    }
+  ]
+}
