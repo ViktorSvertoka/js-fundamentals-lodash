@@ -39,14 +39,15 @@ export function removeUserById(users, id) {
 }
 
 export function updateUser(users, updatedUser) {
-  if (!updatedUser || !updatedUser.id) return users;
+  if (!users || !Array.isArray(users)) {
+    return null;
+  }
 
-  const index = _.findIndex(users, { id: updatedUser.id });
-  if (index === -1) return users;
+  if (!updatedUser || !updatedUser.id) {
+    return users;
+  }
 
-  const updated = { ...users[index], ...updatedUser };
-  const updatedUsers = [...users];
-  updatedUsers[index] = updated;
-
-  return updatedUsers;
+  return users.map((user) =>
+    user.id === updatedUser.id ? { ...user, ...updatedUser } : user
+  );
 }
