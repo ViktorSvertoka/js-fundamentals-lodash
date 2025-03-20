@@ -10,16 +10,43 @@ import _ from "lodash";
 `updateUser(users, updatedUser)`: Updates the information of a user by their id. If the user is not found, the array of users remains unchanged.
 */
 
-export function getActiveUsers(users) {}
+export function getActiveUsers(users) {
+  return _.filter(users, { active: true });
+}
 
-export function getSortedUsersByAge(users) {}
+export function getSortedUsersByAge(users) {
+  return _.sortBy(users, ["age"]);
+}
 
-export function getUserNames(users) {}
+export function getUserNames(users) {
+  return _.map(users, "name");
+}
 
-export function getUserById(users, id) {}
+export function getUserById(users, id) {
+  const user = _.find(users, { id });
+  return user ? user : null;
+}
 
-export function addUser(users, newUser) {}
+export function addUser(users, newUser) {
+  if (!Array.isArray(newUser)) {
+    return [...users, newUser];
+  }
+  return [...users, ...newUser];
+}
 
-export function removeUserById(users, id) {}
+export function removeUserById(users, id) {
+  return _.reject(users, { id });
+}
 
-export function updateUser(users, updatedUser) {}
+export function updateUser(users, updatedUser) {
+  if (!updatedUser || !updatedUser.id) return users;
+
+  const index = _.findIndex(users, { id: updatedUser.id });
+  if (index === -1) return users;
+
+  const updated = { ...users[index], ...updatedUser };
+  const updatedUsers = [...users];
+  updatedUsers[index] = updated;
+
+  return updatedUsers;
+}
